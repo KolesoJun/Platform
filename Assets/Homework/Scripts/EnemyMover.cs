@@ -1,25 +1,20 @@
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMover : MonoBehaviour
 {
     [SerializeField] private float _speed;
+    [SerializeField] private EnemyPlatformDetector _platformDetector;
 
-    private EnemyPlatformController _platformController;
     private float _angleRotate;
-
-    private void Awake()
-    {
-        _platformController = GetComponentInChildren<EnemyPlatformController>();
-    }
 
     private void OnEnable()
     {
-        _platformController.LeavedPlatform += Rotate;
+        _platformDetector.LeavedPlatform += Rotate;
     }
 
     private void OnDisable()
     {
-        _platformController.LeavedPlatform -= Rotate;
+        _platformDetector.LeavedPlatform -= Rotate;
     }
 
     private void Update()

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class EnemyPlatformController : MonoBehaviour
+public class EnemyPlatformDetector : MonoBehaviour
 {
     private RaycastHit2D _ray;
     private float _lengthRay = 5f;

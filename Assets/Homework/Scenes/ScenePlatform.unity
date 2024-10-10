@@ -407,6 +407,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bear
       objectReference: {fileID: 0}
+    - target: {fileID: 8020557680547451187, guid: 882d823e656c98d449ac5253c677b3d5, type: 3}
+      propertyPath: _platformDetector
+      value: 
+      objectReference: {fileID: 1844308274}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -615,6 +619,7 @@ GameObject:
   - component: {fileID: 1482186529}
   - component: {fileID: 1482186528}
   - component: {fileID: 1482186527}
+  - component: {fileID: 1482186532}
   m_Layer: 0
   m_Name: Tilemap
   m_TagString: Untagged
@@ -1036,6 +1041,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1482186532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482186525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a12869a057414e84ab9b4b26c0aed6da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1659659419
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,6 +1141,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1025277471}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1844308274 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2167042385444970397, guid: 882d823e656c98d449ac5253c677b3d5, type: 3}
+  m_PrefabInstance: {fileID: 1320201810}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cce5474bdaa81af47bff848323f2622a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5327277000457820317
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1171,14 +1199,6 @@ PrefabInstance:
     - target: {fileID: 503721715977704713, guid: 1f7adbe63d2ad8443a79a40a8825c74a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3522093725241322898, guid: 1f7adbe63d2ad8443a79a40a8825c74a, type: 3}
-      propertyPath: _force
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 3522093725241322898, guid: 1f7adbe63d2ad8443a79a40a8825c74a, type: 3}
-      propertyPath: _speed
-      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6828692408305833546, guid: 1f7adbe63d2ad8443a79a40a8825c74a, type: 3}
       propertyPath: m_Name
