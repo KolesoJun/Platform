@@ -3,22 +3,11 @@ using UnityEngine;
 
 public class EnemyPlatformDetector : MonoBehaviour
 {
-    private RaycastHit2D _ray;
-    private float _lengthRay = 5f;
-    private float _directionDown = -1f;
-
     public event Action LeavedPlatform;
 
-    private void Update()
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        DrawRay();
-    }
-
-    private void DrawRay()
-    {
-        _ray = Physics2D.Raycast(transform.position, transform.up * _directionDown * _lengthRay);
-
-        if (_ray == false)
+        if (collision.gameObject.TryGetComponent<Ground>(out _))
             LeavedPlatform?.Invoke();
     }
 }

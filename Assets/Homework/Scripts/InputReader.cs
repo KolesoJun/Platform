@@ -4,8 +4,6 @@ public class InputReader : MonoBehaviour
 {
     private const string AxisHorizontal = "Horizontal";
 
-    [SerializeField] private Rigidbody2D _rigidbody;
-
     private bool _isJump;
 
     public float Direction { get; private set; }

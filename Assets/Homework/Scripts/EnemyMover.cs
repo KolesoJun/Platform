@@ -17,12 +17,7 @@ public class EnemyMover : MonoBehaviour
         _platformDetector.LeavedPlatform -= Rotate;
     }
 
-    private void Update()
-    {
-        Move();
-    }
-
-    private void Move()
+    public void Move()
     {
         transform.Translate(Vector2.right * _speed * Time.deltaTime);
     }
