@@ -13,7 +13,7 @@ public class PlayerAnimator: MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    public void AnimMove(float direction) => _animator.SetFloat(PlayerAnimator.Speed, Mathf.Abs(direction));
+    public void PlayAnimMove(float direction) => _animator.SetFloat(PlayerAnimator.Speed, Mathf.Abs(direction));
 
-    public void AnimJump() => _animator.SetTrigger(PlayerAnimator.IsJump);
+    public void PlayAnimJump() => _animator.SetTrigger(PlayerAnimator.IsJump);
 }

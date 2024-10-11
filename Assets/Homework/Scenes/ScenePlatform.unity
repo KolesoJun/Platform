@@ -407,6 +407,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bear
       objectReference: {fileID: 0}
+    - target: {fileID: 5251192229717082404, guid: 882d823e656c98d449ac5253c677b3d5, type: 3}
+      propertyPath: m_Name
+      value: GroundDetector
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020557680547451187, guid: 882d823e656c98d449ac5253c677b3d5, type: 3}
+      propertyPath: _groubdDetector
+      value: 
+      objectReference: {fileID: 1694475981}
+    - target: {fileID: 8020557680547451187, guid: 882d823e656c98d449ac5253c677b3d5, type: 3}
+      propertyPath: _platformDetector
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1093,6 +1105,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1025277471}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1694475981 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4582039548248614147, guid: 882d823e656c98d449ac5253c677b3d5, type: 3}
+  m_PrefabInstance: {fileID: 1320201810}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89f2b971fbc1caf4da1205805c16c80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1753997953
 GameObject:
   m_ObjectHideFlags: 0

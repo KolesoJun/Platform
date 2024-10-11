@@ -3,23 +3,16 @@ using UnityEngine;
 public class EnemyMover : MonoBehaviour
 {
     [SerializeField] private float _speed;
-    [SerializeField] private EnemyPlatformDetector _platformDetector;
+    [SerializeField] private GroundDetector _groubdDetector;
 
     private float _angleRotate;
 
-    private void OnEnable()
-    {
-        _platformDetector.LeavedPlatform += Rotate;
-    }
-
-    private void OnDisable()
-    {
-        _platformDetector.LeavedPlatform -= Rotate;
-    }
-
     public void Move()
     {
-        transform.Translate(Vector2.right * _speed * Time.deltaTime);
+        if (_groubdDetector.IsGround)
+            transform.Translate(Vector2.right * _speed * Time.deltaTime);
+        else
+            Rotate();
     }
 
     private void Rotate()

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerWallet))]
-public class PlayerCollisionDetector : MonoBehaviour
+public class PlayerInteractor : MonoBehaviour
 {
     private PlayerWallet _wallet;
 

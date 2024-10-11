@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    [SerializeField] private int _value;
-
-    public int Value => _value;
+    [field: SerializeField]
+    public int Value { get; private set; }
 }

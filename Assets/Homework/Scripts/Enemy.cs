@@ -3,15 +3,15 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyMover))]
 public class Enemy : MonoBehaviour
 {
-    private EnemyMover _enemyMover;
+    private EnemyMover _mover;
 
     private void Awake()
     {
-        _enemyMover = GetComponent<EnemyMover>();
+        _mover = GetComponent<EnemyMover>();
     }
 
     private void FixedUpdate()
     {
-        _enemyMover.Move();
+        _mover.Move();
     }
 }
