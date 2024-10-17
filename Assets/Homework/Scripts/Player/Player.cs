@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     private PlayerMover _mover;
     private GroundDetector _groundDetector;
     private PlayerAnimator _playerAnimator;
+    private PlayerHealth _health;
     
     private void Awake()
     {
@@ -15,6 +16,12 @@ public class Player : MonoBehaviour
         _mover = GetComponent<PlayerMover>();
         _groundDetector = GetComponent<GroundDetector>();
         _playerAnimator = GetComponent<PlayerAnimator>();
+        _health = GetComponent<PlayerHealth>();
+    }
+
+    private void OnEnable()
+    {
+        _health.Died += GameOver;
     }
 
     private void FixedUpdate()
@@ -32,5 +39,15 @@ public class Player : MonoBehaviour
             _mover.Jump();
             _playerAnimator.PlayAnimJump();
         }
+    }
+
+    private void OnDisable()
+    {
+        _health.Died -= GameOver;
+    }
+
+    private void GameOver()
+    {
+        Destroy(gameObject);
     }
 }
