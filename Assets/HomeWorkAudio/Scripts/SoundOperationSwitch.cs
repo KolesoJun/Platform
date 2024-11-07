@@ -26,11 +26,15 @@ public class SoundOperationSwitch : MonoBehaviour
         _toggle.onValueChanged.RemoveListener(SelectGeneralMode);
     }
 
-    public void SelectGeneralMode(bool enabled)
+    private void SelectGeneralMode(bool enabled)
     {
+        float soundVolume;
+
         if (enabled)
-            _mixerGroup.audioMixer.SetFloat(_mixerGroup.name, _soundOn);
+            soundVolume = _soundOn;
         else
-            _mixerGroup.audioMixer.SetFloat(_mixerGroup.name, _soundOff);
+            soundVolume = _soundOff;
+
+            _mixerGroup.audioMixer.SetFloat(_mixerGroup.name, soundVolume);
     }
 }

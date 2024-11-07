@@ -24,8 +24,16 @@ public class SliderChangeVolume : MonoBehaviour
         _slider.onValueChanged.RemoveListener(CnangeVolume);
     }
 
-    public void CnangeVolume(float volue)
+    private void CnangeVolume(float volue)
     {
-        _mixerGroup.audioMixer.SetFloat(_mixerGroup.name, Mathf.Log10(volue) *20);
+        float minVolume = -80f;
+        float volumeSound;
+
+        if (volue == 0)
+            volumeSound = minVolume;
+        else
+            volumeSound = Mathf.Log10(volue) * 20;
+
+        _mixerGroup.audioMixer.SetFloat(_mixerGroup.name, volumeSound);
     }
 }
