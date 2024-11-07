@@ -1,52 +1,35 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+public abstract class HealthBar : MonoBehaviour
 {
-    [SerializeField] private Slider _slider;
-    [SerializeField] private PlayerHealth _health;
-    [SerializeField] private float _delay;
-    [SerializeField] private float _step;
+    [SerializeField] protected Slider Slider;
+    [SerializeField] protected PlayerHealth Health;
 
-    WaitForSeconds _wait;
-    private Coroutine _coroutine;
-    private float _percent = 100f;
+    protected float Percent = 100f;
 
     private void Awake()
     {
-        _slider.maxValue = _percent;
-        _wait = new WaitForSeconds(_delay);
+        if(Slider != null)
+            Slider.maxValue = Percent;
     }
 
     private void OnEnable()
     {
-        _health.ChangedCurrentHealth += View;
-        _health.Teated += View;
+        Health.ChangedCurrentHealth += View;
+        Health.Teated += View;
     }
 
     private void OnDisable()
     {
-        _health.ChangedCurrentHealth -= View;
-        _health.Teated -= View;
+        Health.ChangedCurrentHealth -= View;
+        Health.Teated -= View;
     }
 
-    private void View(float health)
+    protected abstract void View(float value);
+
+    protected float CalculatePercent(float value)
     {
-        float targetPercent = health * _percent / _health.HealthMax;
-
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-
-        _coroutine = StartCoroutine(Edit(targetPercent));
-    }
-
-    private IEnumerator Edit(float targetPercent)
-    {
-        while (_slider.value != targetPercent)
-        {
-            _slider.value = Mathf.MoveTowards(_slider.value, targetPercent, _step);
-            yield return _wait;
-        }
+        return value * Percent / Health.HealthMax;
     }
 }

@@ -20,6 +20,7 @@ abstract public class HealthHandler : MonoBehaviour
     {
         if (HealthCurrent - damage <= 0)
         {
+            HealthCurrent = 0;
             Died?.Invoke();
         }
         else
