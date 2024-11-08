@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 31348601}
   - component: {fileID: 31348604}
   - component: {fileID: 31348603}
-  - component: {fileID: 31348602}
+  - component: {fileID: 31348605}
   m_Layer: 5
   m_Name: TextBar
   m_TagString: Untagged
@@ -161,20 +161,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.000015259, y: -164.8}
   m_SizeDelta: {x: 387.42, y: 166.58}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &31348602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 31348600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1751c617b9758054789eb303965bdfe0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: {fileID: 2057592053}
-  _textUI: {fileID: 1506145098}
 --- !u!114 &31348603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,6 +199,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 31348600}
   m_CullTransparentMesh: 1
+--- !u!114 &31348605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 31348600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 692412d910e171345945e7ef85e69d2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textUI: {fileID: 1506145098}
+  _health: {fileID: 2057592053}
 --- !u!1 &126435765
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +530,7 @@ GameObject:
   m_Component:
   - component: {fileID: 347253415}
   - component: {fileID: 347253417}
-  - component: {fileID: 347253416}
+  - component: {fileID: 347253418}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -560,22 +560,6 @@ RectTransform:
   m_AnchoredPosition: {x: -71.9, y: 118}
   m_SizeDelta: {x: 818.46, y: 69.24}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &347253416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 347253414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6087d6e9264e8134782028ad98fc5be2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _slider: {fileID: 347253417}
-  _health: {fileID: 2057592053}
-  _delay: 0.01
-  _step: 1.5
 --- !u!114 &347253417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,6 +611,22 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &347253418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347253414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6087d6e9264e8134782028ad98fc5be2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Slider: {fileID: 347253417}
+  Health: {fileID: 2057592053}
+  _delay: 0.01
+  _step: 1.5
 --- !u!1 &576435459
 GameObject:
   m_ObjectHideFlags: 0
@@ -1871,7 +1871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 525e42c0fb7a4404da29436273b6448a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <HealthMax>k__BackingField: 5
+  <CountMax>k__BackingField: 5
 --- !u!4 &2057592054
 Transform:
   m_ObjectHideFlags: 0
@@ -1990,8 +1990,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae28b1c719144d4cbda993b17ddb730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slider: {fileID: 2074814990}
-  _health: {fileID: 2057592053}
+  Slider: {fileID: 2074814990}
+  Health: {fileID: 2057592053}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
