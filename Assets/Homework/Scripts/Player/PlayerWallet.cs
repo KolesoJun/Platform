@@ -2,11 +2,22 @@ using UnityEngine;
 
 public class PlayerWallet : MonoBehaviour
 {
-    private int _coins;
+    [SerializeField] private PlayerInteractor _playerInteractor;
 
-    public void AddCoin(int value)
+    private float _coins;
+
+    private void OnEnable()
+    {
+        _playerInteractor.TouchedCoin += AddCoin;
+    }
+
+    private void OnDisable()
+    {
+        _playerInteractor.TouchedCoin -= AddCoin;
+    }
+
+    public void AddCoin(float value)
     {
         _coins += value;
-        Debug.Log(_coins);
     }
 }

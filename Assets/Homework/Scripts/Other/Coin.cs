@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class Coin : MonoBehaviour
+public class Coin : Item
 {
-    [field: SerializeField]
-    public int Value { get; private set; }
+    
 }

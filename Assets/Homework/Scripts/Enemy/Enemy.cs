@@ -1,18 +1,17 @@
 using UnityEngine;
 
-[RequireComponent(typeof(EnemyMover), typeof(EnemyHealth))]
+[RequireComponent(typeof(EnemyHealth))]
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private EnemyDeterminantPlayer _determinantPlayer;
+    [SerializeField] private PlayerDetector _determinantPlayer;
+    [SerializeField] private EnemyMover _mover;
     [SerializeField] private float _timeLifeForDie;
 
-    private EnemyMover _mover;
     private EnemyHealth _health;
     private Player _target;
 
     private void Awake()
     {
-        _mover = GetComponent<EnemyMover>();
         _health = GetComponent<EnemyHealth>();
     }
 

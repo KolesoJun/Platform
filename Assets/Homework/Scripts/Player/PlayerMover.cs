@@ -1,21 +1,16 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _speed;
-    [SerializeField] private float _force;
-
-    private Rigidbody2D _rigidbody;
+    [SerializeField] private Rigidbody2D _rigidbody;
+    [SerializeField] private Player _player;
     
-    private void Awake()
-    {
-        _rigidbody = GetComponent<Rigidbody2D>();
-    }
+    [field: SerializeField] public float Force { get; private set; }
 
     public void Move(float direction)
     {
-        transform.Translate(transform.right * direction * _speed * Time.deltaTime);
+        _player.transform.Translate(_player.transform.right * direction * _speed * Time.deltaTime);
     }
 
     public void Rotate(float direction)
@@ -23,13 +18,13 @@ public class PlayerMover : MonoBehaviour
         float angleLeft = 180f;
 
         if (direction >= 0f)
-            transform.rotation = new Quaternion();
+            _player.transform.rotation = new Quaternion();
         else
-            transform.rotation = Quaternion.Euler(0f, angleLeft, 0f);
+            _player.transform.rotation = Quaternion.Euler(0f, angleLeft, 0f);
     }
 
     public void Jump()
     {
-        _rigidbody.AddForce(Vector2.up * _force);
+        _rigidbody.AddForce(Vector2.up * Force);
     }
 }

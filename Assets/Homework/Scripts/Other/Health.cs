@@ -28,7 +28,7 @@ abstract public class Health : MonoBehaviour
         ChangedCountCurrent?.Invoke(CountCurrent);
     }
 
-    public void ReplenishHealth(float countHealth)
+    public void Replenish(float countHealth)
     {
         if (CountCurrent + countHealth < CountMax)
             CountCurrent += countHealth;

@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class MedicineKit : MonoBehaviour
+public class MedicineKit : Item
 {
-    [field: SerializeField]
-    public int CountHealth { get; private set; }
+
 }

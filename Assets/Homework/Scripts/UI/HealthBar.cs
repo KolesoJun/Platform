@@ -4,24 +4,21 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    private const float Percent = 100f;
-
     [SerializeField] private float _delay;
     [SerializeField] private float _step;
-    [SerializeField] private Slider _slider;
+    [SerializeField] private Image _imageFill;
     [SerializeField] private Health _health;
 
     private Coroutine _coroutine;
 
-    private void Awake()
-    {
-        _slider.maxValue = Percent;
-        _slider.value = Percent;
-    }
-
     private void OnEnable()
     {
         _health.ChangedCountCurrent += View;
+    }
+
+    private void LateUpdate()
+    {
+        transform.rotation = Quaternion.identity;
     }
 
     private void OnDisable()
@@ -36,6 +33,7 @@ public class HealthBar : MonoBehaviour
         if (targetPercent <= 0)
         {
             Off();
+            
             return;
         }
 
@@ -48,17 +46,17 @@ public class HealthBar : MonoBehaviour
     private IEnumerator Edit(float targetPercent)
     {
         WaitForSeconds wait = new WaitForSeconds(_delay);
-
-        while (_slider.value != targetPercent)
+        
+        while (_imageFill.fillAmount != targetPercent)
         {
-            _slider.value = Mathf.MoveTowards(_slider.value, targetPercent, _step);
+            _imageFill.fillAmount = Mathf.MoveTowards(_imageFill.fillAmount, targetPercent, _step);
             yield return wait;
         }
     }
 
     private float CalculatePercent(float value)
     {
-        return value * Percent / _health.CountMax;
+        return value / _health.CountMax;
     }
 
     private void Off()
