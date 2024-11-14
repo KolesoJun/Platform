@@ -17,6 +17,12 @@ public class AbylityVampir : MonoBehaviour
     private bool _isWork;
 
     public event Action<bool> Enabled;
+    public event Action<float> WorkedTime;
+
+    private void Start()
+    {
+        WorkedTime?.Invoke(_timeWorking);
+    }
 
     private void OnEnable()
     {
@@ -40,6 +46,7 @@ public class AbylityVampir : MonoBehaviour
             _coroutine = StartCoroutine(Work());
             _isWork = true;
             Enabled?.Invoke(_isWork);
+            WorkedTime?.Invoke(_timeWorking);
         }
     }
 
@@ -57,6 +64,7 @@ public class AbylityVampir : MonoBehaviour
             }
             
             remainsTime--;
+            WorkedTime?.Invoke(remainsTime);
             yield return wait;
         }
 
@@ -64,6 +72,7 @@ public class AbylityVampir : MonoBehaviour
         Enabled?.Invoke(false);
         yield return wait;
         _isWork = false;
+        WorkedTime?.Invoke(_timeWorking);
     }
 
     private void SelectTarget(EnemyHealth enemy)
