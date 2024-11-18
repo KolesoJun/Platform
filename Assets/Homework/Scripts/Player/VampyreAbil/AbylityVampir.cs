@@ -4,82 +4,83 @@ using UnityEngine;
 
 public class AbylityVampir : MonoBehaviour
 {
-    [SerializeField] private AreaActionVampire _area;
+    [SerializeField] private VampirismTargetsHandler _targetsHandler;
     [SerializeField] private PlayerHealth _health;
     [SerializeField] private InputReader _inputReader;
     [SerializeField] private float _healthTakeover;
-    [SerializeField] private float _timeRecharge;
-    [SerializeField] public float _timeWorking;
+
+    [field: SerializeField] public float TimeRecharge { get; private set; }
+    [field: SerializeField] public float TimeWorking { get; private set; }
 
     private Coroutine _coroutine;
     private EnemyHealth _target;
     private float _delay = 1f;
     private bool _isWork;
 
-    public event Action<bool> Enabled;
-    public event Action<float> WorkedTime;
-
-    private void Start()
-    {
-        WorkedTime?.Invoke(_timeWorking);
-    }
+    public event Action<bool> CanDrawed;
 
     private void OnEnable()
     {
         _inputReader.ActivatedVampirism += Activate;
-        _area.DetectedTarget += SelectTarget;
     }
 
     private void OnDisable()
     {
         _inputReader.ActivatedVampirism -= Activate;
-        _area.DetectedTarget -= SelectTarget;
     }
 
     private void Activate()
     {
         if (_isWork == false)
         {
+            _isWork = true;
+            CanDrawed?.Invoke(_isWork);
+
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
 
             _coroutine = StartCoroutine(Work());
-            _isWork = true;
-            Enabled?.Invoke(_isWork);
-            WorkedTime?.Invoke(_timeWorking);
         }
     }
 
     private IEnumerator Work()
     {
         WaitForSeconds wait = new WaitForSeconds(_delay);
-        float remainsTime = _timeWorking;
-
+        float remainsTime = TimeWorking;
+        
         while (remainsTime > 0)
         {
+            _target = _targetsHandler.Get(_health);
+
             if (_target != null)
             {
+                if(_target.CountCurrent > _healthTakeover)
+                    _health.Replenish(_healthTakeover);
+                else
+                    _health.Replenish(_target.CountCurrent);
+
                 _target.TakeDamage(_healthTakeover);
-                _health.Replenish(_healthTakeover);
             }
             
             remainsTime--;
-            WorkedTime?.Invoke(remainsTime);
             yield return wait;
         }
 
-        wait = new WaitForSeconds(_timeRecharge);
-        Enabled?.Invoke(false);
-        yield return wait;
-        _isWork = false;
-        WorkedTime?.Invoke(_timeWorking);
+        CanDrawed?.Invoke(false);
+        _coroutine = StartCoroutine(Recharge());
     }
 
-    private void SelectTarget(EnemyHealth enemy)
+    private IEnumerator Recharge()
     {
-        if (enemy != null)
-            _target = enemy;
-        else
-            _target = null;
+        WaitForSeconds wait = new WaitForSeconds(_delay);
+        float remainsTime = TimeRecharge;
+
+        while (remainsTime > 0)
+        {
+            remainsTime--;
+            yield return wait;
+        }
+
+        _isWork = false;
     }
 }
