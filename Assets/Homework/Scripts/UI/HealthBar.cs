@@ -40,10 +40,10 @@ public class HealthBar : MonoBehaviour
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(Edit(targetPercent));
+        _coroutine = StartCoroutine(Work(targetPercent));
     }
 
-    private IEnumerator Edit(float targetPercent)
+    private IEnumerator Work(float targetPercent)
     {
         WaitForSeconds wait = new WaitForSeconds(_delay);
         
